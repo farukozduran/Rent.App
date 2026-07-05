@@ -1,0 +1,233 @@
+@using Rent.App.Models
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    var latestRentals = ViewBag.LatestRentals as List<RentalDetailReport>;
+    var customerSpendings = ViewBag.CustomerSpendings as List<CustomerSpendingReport>;
+    var carRentalCounts = ViewBag.CarRentalCounts as List<CarRentalCountReport>;
+}
+
+<h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>
+
+<div class="row">
+
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Customer Management
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            Edit or delete customers
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+
+                </div>
+
+                <div class="mt-3">
+                    <a asp-controller="Customers" asp-action="Index" class="btn btn-primary btn-sm">
+                        Manage Customers
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Car Management
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            Edit or delete cars
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <i class="fas fa-car fa-2x text-gray-300"></i>
+                    </div>
+
+                </div>
+
+                <div class="mt-3">
+                    <a asp-controller="Cars" asp-action="Index" class="btn btn-success btn-sm">
+                        Manage Cars
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Rental Management
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            Edit or delete rentals
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <i class="fas fa-key fa-2x text-gray-300"></i>
+                    </div>
+
+                </div>
+
+                <div class="mt-3">
+                    <a asp-controller="Rentals" asp-action="Index" class="btn btn-warning btn-sm">
+                        Manage Rentals
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<h2 class="h4 mb-4 text-gray-800">Reports</h2>
+
+<div class="row">
+
+    <!-- Latest Rentals -->
+    <div class="col-lg-12 mb-4">
+        <div class="card shadow">
+            <div class="card-header py-3 bg-primary">
+                <h6 class="m-0 font-weight-bold text-white">Latest 5 Rentals</h6>
+            </div>
+
+            <div class="card-body">
+                @if (latestRentals != null && latestRentals.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Car Details</th>
+                                    <th>Rent Date</th>
+                                    <th>Total Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in latestRentals)
+                                {
+                                    <tr>
+                                        <td>@item.CustomerName @item.CustomerSurname</td>
+                                        <td>@item.CarBrand @item.CarModel</td>
+                                        <td>@item.RentDate</td>
+                                        <td>@item.TotalPrice ₺</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted mb-0">No rental records found.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Customers by Spending -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header py-3 bg-success">
+                <h6 class="m-0 font-weight-bold text-white">Top Customers by Spending</h6>
+            </div>
+
+            <div class="card-body">
+                @if (customerSpendings != null && customerSpendings.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Rentals</th>
+                                    <th>Total Spent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in customerSpendings)
+                                {
+                                    <tr>
+                                        <td>@item.CustomerName @item.CustomerSurname</td>
+                                        <td>@item.RentalCount</td>
+                                        <td>@item.TotalSpent ₺</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted mb-0">No customer records found.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Most Rented Cars -->
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header py-3 bg-warning">
+                <h6 class="m-0 font-weight-bold text-white">Most Rented Cars</h6>
+            </div>
+
+            <div class="card-body">
+                @if (carRentalCounts != null && carRentalCounts.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Car Details</th>
+                                    <th>Plate</th>
+                                    <th>Rental Count</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in carRentalCounts)
+                                {
+                                    <tr>
+                                        <td>@item.CarBrand @item.CarModel</td>
+                                        <td>@item.Plate</td>
+                                        <td>@item.RentalCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted mb-0">No car records found.</p>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
