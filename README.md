@@ -61,10 +61,54 @@ Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyi
     ```
     Uygulama başarıyla derlendikten sonra terminalde belirtilen `http://localhost:<port>` veya `https://localhost:<port>` adresi üzerinden tarayıcınızda görüntüleyebilirsiniz.
 
-## 🤝 Katkıda Bulunma
 
-Projeye katkıda bulunmak isterseniz lütfen bir `Pull Request` (PR) açmaktan çekinmeyin. Büyük değişiklikler yapmadan önce tartışmak için bir `Issue` oluşturmanız rica olunur.
+    ## 📸 Ekran Görüntüleri (Screenshots)
 
-## 📄 Lisans
+Araç ve kiralama yönetim sisteminin kullanıcı arayüzüne ve yönetim paneline ait ekran görüntülerine aşağıdan ulaşabilirsiniz:
 
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır. Daha fazla bilgi için lisans dosyasına göz atabilirsiniz.
+### 🌐 Ana Sayfa (Genel Bakış)
+![Ana Sayfa](assets/screenshots/anasayfa.png)
+
+---
+
+### 📋 Listeleme ve Kayıt Ekranları
+Sistemde yer alan araçların, kayıtlı müşterilerin ve kiralama işlemlerinin görüntülendiği listeleme ekranları:
+
+<table width="100%">
+  <tr>
+    <td width="33%" align="center">
+      <strong>Araçlar (Cars)</strong><br />
+      <img src="assets/screenshots/cars.png" alt="Araçlar Listesi" width="100%"/>
+    </td>
+    <td width="33%" align="center">
+      <strong>Müşteriler (Customers)</strong><br />
+      <img src="assets/screenshots/customers.png" alt="Müşteriler Listesi" width="100%"/>
+    </td>
+    <td width="33%" align="center">
+      <strong>Kiralamalar (Rentals)</strong><br />
+      <img src="assets/screenshots/rentals.png" alt="Kiralamalar Listesi" width="100%"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+### ⚙️ Yönetim Paneli (Admin Area)
+Sistem yöneticilerinin metrikleri takip ettiği ve yeni araç kayıtlarını gerçekleştirdiği yönetim arayüzleri:
+
+<table width="100%">
+  <tr>
+    <td width="33%" align="center">
+      <strong>Admin Dashboard</strong><br />
+      <img src="assets/screenshots/admin_dashboard.png" alt="Admin Dashboard Ekranı" width="100%"/>
+    </td>
+    <td width="33%" align="center">
+      <strong>Araç Yönetimi (Admin Cars)</strong><br />
+      <img src="assets/screenshots/admin_cars.png" alt="Admin Araç Yönetimi" width="100%"/>
+    </td>
+    <td width="33%" align="center">
+      <strong>Yeni Araç Ekle (Create Car)</strong><br />
+      <img src="assets/screenshots/create_cars.png" alt="Yeni Araç Ekleme Ekranı" width="100%"/>
+    </td>
+  </tr>
+</table>
